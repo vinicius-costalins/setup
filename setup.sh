@@ -2,6 +2,8 @@
 
 echo "--> Initial Setup"
 
+USER='danielorkae'
+
 sudo apt-get update
 
 sudo apt-get install -y \
@@ -74,6 +76,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma-continuum/zinit/ma
 curl https://raw.githubusercontent.com/danielorkae/setup/main/.zshrc > $HOME/.zshrc
 
 # Initialize zsh
-echo "DONE!!!"
-chsh -s $(which zsh)
+sudo chsh -s $(which zsh) $USER
 zsh
+echo "DONE!!!"
