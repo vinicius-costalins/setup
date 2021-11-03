@@ -12,30 +12,6 @@ sudo apt-get install -y \
   lsb-release \
   unzip
 
-echo "--> Installing and configuring zsh"
-
-ZSH_CUSTOM="$HOME/.oh-my-zsh"
-
-# Install zsh
-sudo apt install -y zsh
-
-# Install oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-# Install spaceship theme
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-
-# Install zinit
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-
-# Copy .zshrc from github
-curl https://raw.githubusercontent.com/danielorkae/setup/main/.zshrc > $HOME/.zshrc
-
-# Initialize zsh
-zsh
-chsh -s $(which zsh)
-
 echo "--> Installing dev tools"
 
 # Install NodeJS LTS
@@ -46,7 +22,13 @@ sudo apt-get install -y nodejs
 sudo npm --global install yarn
 
 # Install PHP
-sudo apt install -y php
+sudo apt install -y php \
+php-curl \
+php-zip \
+php-intl \
+php-mbstring \
+php-xml \
+php-imagick
 
 # Install Composer
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -71,4 +53,27 @@ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
+echo "--> Installing and configuring zsh"
+
+ZSH_CUSTOM="$HOME/.oh-my-zsh"
+
+# Install zsh
+sudo apt install -y zsh
+
+# Install oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Install spaceship theme
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+# Install zinit
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+
+# Copy .zshrc from github
+curl https://raw.githubusercontent.com/danielorkae/setup/main/.zshrc > $HOME/.zshrc
+
+# Initialize zsh
 echo "DONE!!!"
+chsh -s $(which zsh)
+zsh
