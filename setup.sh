@@ -2,7 +2,7 @@
 
 echo "--> Initial Setup"
 
-USER='danielorkae'
+USER="danielorkae"
 
 sudo apt-get update
 
