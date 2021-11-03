@@ -18,7 +18,6 @@ ZSH_CUSTOM="$HOME/.oh-my-zsh"
 
 # Install zsh
 sudo apt install -y zsh
-chsh -s $(which zsh)
 
 # Install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -35,6 +34,7 @@ curl https://raw.githubusercontent.com/danielorkae/setup/main/.zshrc > $HOME/.zs
 
 # Initialize zsh
 zsh
+chsh -s $(which zsh)
 
 echo "--> Installing dev tools"
 
